@@ -48,9 +48,11 @@ class PriceOldController extends Controller
 
         $data = $request->post('data');
 
-        $priceNew = [];
+        // Для выполнения задания очистим таблицы цен
+        // В реальных условиях таблица price_olds должна существовать ранее
         PriceNew::query()->delete();
         PriceOld::query()->delete();
+
         foreach ($data as $key => $value)
         {
             PriceOld::query()->create($value);
